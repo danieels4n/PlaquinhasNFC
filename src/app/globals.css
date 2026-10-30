@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/*
+ * PlacaLink — identidade azul.
+ * Azul principal nas ações e no item ativo; azul-marinho no texto forte; branco e #F7F9FC nos fundos;
+ * azul-claro para fundos secundários. Verde só para positivo, vermelho só para alerta/destrutivo.
+ * Raios: 16 (cartões) / 12 (botões e campos) / 999 (pílulas). Sombras só em elementos que flutuam.
+ */
+@theme {
+  --color-bg: #f7f9fc;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5fb;
+  --color-raised: #eaf1ff; /* azul-claro: fundos secundários e destaques sutis */
+  --color-line: #e5eaf2;
+  --color-rule: #eef2f7;
+  --color-control: #d5dce8;
+  --color-ink: #172033;
+  --color-navy: #0b1f45;
+  --color-muted: #687286; /* #778196 escurecido para ter contraste 4.5:1 no branco */
+  --color-accent: #1455d9; /* azul principal */
+  --color-accent-strong: #0f45b3;
+  --color-accent-ink: #ffffff;
+  --color-data: #1455d9;
+  --color-data-bg: #eaf1ff;
+  --color-ok: #1f7a4c;
+  --color-ok-bg: #e3f7ec;
+  --color-ok-ink: #0d4a2c;
+  --color-warn: #8a4b0f;
+  --color-warn-bg: #fff6e5;
+  --color-danger: #c62828;
+  --color-danger-bg: #fdecec;
+  --color-danger-ink: #8e1c1c;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.tabular-nums,
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility card {
+  @apply rounded-2xl border border-line bg-surface p-4 md:p-5;
+}
+/* Destaque sutil: fundo azul-claro, sem borda */
+@utility callout {
+  @apply border-transparent bg-raised;
+}
+@utility btn {
+  @apply inline-flex h-11 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+}
+/* Azul com gradiente sutil (como nos exemplos) e sombra suave colorida */
+@utility btn-primary {
+  @apply btn text-accent-ink shadow-[0_8px_20px_-8px_rgba(20,85,217,0.6)] hover:brightness-110;
+  background-image: linear-gradient(180deg, #2a6af0 0%, #1455d9 55%, #0f47bf 100%);
+}
+/* Secundário: contorno azul, sem preencher */
+@utility btn-ghost {
+  @apply btn border border-[#c7d6f5] bg-surface text-accent hover:border-accent hover:bg-raised;
+}
+@utility btn-danger {
+  @apply btn border border-danger/40 bg-surface text-danger hover:bg-danger-bg;
+}
+@utility link {
+  @apply font-semibold text-accent hover:text-accent-strong hover:underline underline-offset-4;
+}
+@utility label {
+  @apply mb-2 block text-sm font-medium text-ink;
+}
+@utility input {
+  @apply h-12 w-full rounded-xl border border-control bg-surface px-3.5 text-[16px] text-ink outline-none placeholder:text-muted focus:border-accent focus:ring-4 focus:ring-accent/15 md:h-11 md:text-sm;
+}
+@utility chip {
+  @apply inline-flex h-6 flex-none items-center rounded-full px-2.5 text-xs font-semibold whitespace-nowrap;
+}
+@utility chip-neutral {
+  @apply chip bg-surface-2 text-[#4a5468];
+}
+@utility chip-ok {
+  @apply chip bg-ok-bg text-ok-ink;
+}
+@utility chip-warn {
+  @apply chip bg-warn-bg text-warn;
+}
+@utility chip-bad {
+  @apply chip bg-danger-bg text-danger-ink;
+}
+@utility chip-info {
+  @apply chip bg-raised text-accent-strong;
+}
+@utility eyebrow {
+  @apply text-[13px] font-medium text-muted;
+}
+/* Abas sublinhadas: ativa em azul */
+@utility tabs {
+  @apply flex gap-5 overflow-x-auto overflow-y-hidden border-b border-line [scrollbar-width:none];
+}
+@utility tab {
+  @apply -mb-px flex shrink-0 items-center gap-1.5 border-b-2 border-transparent pt-1 pb-2.5 text-sm font-medium text-muted hover:text-ink;
+}
+@utility tab-active {
+  @apply border-accent text-accent;
+}
+@utility notice-ok {
+  @apply rounded-xl bg-ok-bg px-3.5 py-2.5 text-sm text-ok-ink;
+  animation: rise 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@utility notice-bad {
+  @apply rounded-xl bg-danger-bg px-3.5 py-2.5 text-sm text-danger-ink;
+  animation: rise 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+/* Cartões clicáveis: levantam um pouco ao passar/tocar */
+@utility card-press {
+  @apply transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-[#c7d6f5] hover:shadow-[0_10px_24px_-14px_rgba(11,31,69,0.35)] active:translate-y-0 active:scale-[0.99];
+}
+/* Brilho azul suave no topo das telas (manchas de gradiente como nos exemplos) */
+@utility glow-top {
+  background-image:
+    radial-gradient(min(30rem, 75vw) 13rem at 100% 4.5rem, rgba(20, 85, 217, 0.22), transparent 72%),
+    radial-gradient(min(22rem, 60vw) 10rem at 82% 9rem, rgba(120, 160, 255, 0.28), transparent 72%),
+    radial-gradient(min(34rem, 95vw) 14rem at 0% 2rem, rgba(214, 228, 255, 0.9), transparent 72%);
+}
+/* Fundo da comemoração */
+@utility glow-celebrate {
+  background-image:
+    radial-gradient(30rem 22rem at 85% 0%, rgba(20, 85, 217, 0.18), transparent 70%),
+    radial-gradient(26rem 20rem at 0% 100%, rgba(120, 160, 255, 0.22), transparent 70%),
+    linear-gradient(180deg, #f7f9ff, #ffffff);
+}
+@utility check-badge {
+  background-image: linear-gradient(160deg, #3b7bff 0%, #1455d9 50%, #0b3fae 100%);
+  box-shadow: 0 18px 40px -14px rgba(20, 85, 217, 0.65), inset 0 2px 0 rgba(255, 255, 255, 0.25);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0.4); }
+  60% { opacity: 1; transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes ray {
+  0% { opacity: 0; transform: rotate(var(--r)) translateY(-58px) scaleY(0.2); }
+  40% { opacity: 1; }
+  100% { opacity: 1; transform: rotate(var(--r)) translateY(-86px) scaleY(1); }
+}
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(16deg); }
+  20%, 40% { transform: rotate(-8deg); }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-rise { animation: rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.animate-pop { animation: pop 520ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+.animate-fade { animation: fade 240ms ease-out both; }
+.wave { display: inline-block; transform-origin: 70% 80%; animation: wave 2.2s ease-in-out 0.4s 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+textarea.input {
+  height: auto;
+  min-height: 5rem;
+  padding-block: 0.625rem;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
