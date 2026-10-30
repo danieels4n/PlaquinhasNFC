@@ -41,7 +41,7 @@ async function BatchSheet({ params }: { params: PageProps<"/admin/lotes/[id]">["
           <PrintButton />
         </div>
         <p className="mb-5 text-xs text-muted">
-          Imprima um QR em cada plaquinha. Os chips NFC vão virgens: o revendedor grava o link de cada uma depois, pelo app.
+          Imprima um QR em cada plaquinha. Os chips NFC vão virgens: o revendedor grava o link de cada uma depois, com o app NFC Tools.
         </p>
       </div>
 

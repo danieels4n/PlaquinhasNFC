@@ -66,7 +66,7 @@ async function SupplierOrder({ params }: { params: PageProps<"/fornecedor/pedido
         {showPrint && (
           <div className="card callout">
             <p className="font-medium">1. Produza as {plateCount} plaquinhas</p>
-            <p className="mt-1 text-sm text-muted">Imprima os QR Codes nas plaquinhas. Os chips NFC vão virgens: o revendedor grava o link depois, pelo app.</p>
+            <p className="mt-1 text-sm text-muted">Imprima os QR Codes nas plaquinhas. Os chips NFC vão virgens: o revendedor grava o link depois, com o app NFC Tools.</p>
             <div className="mt-3 grid">
               <a href={`/admin/lotes/${order.batch_id}`} className="btn-primary">Imprimir QR</a>
             </div>
