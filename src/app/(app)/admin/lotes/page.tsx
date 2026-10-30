@@ -55,7 +55,7 @@ async function Batches() {
       )}
 
       {batches.length === 0 ? (
-        <EmptyState title="Nenhum lote ainda" text="Gere um lote para imprimir os QR Codes e gravar os chips NFC." />
+        <EmptyState title="Nenhum lote ainda" text="Gere um lote para imprimir os QR Codes das plaquinhas." />
       ) : (
         <ul className="space-y-3">
           {batches.map((b) => {

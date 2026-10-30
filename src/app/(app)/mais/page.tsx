@@ -96,7 +96,7 @@ async function Account() {
           title={user.isAdmin ? "Administração" : "Fornecedor"}
           entries={[
             { href: "/fornecedor", title: "Pedidos para produzir", text: "Fila de produção e envio" },
-            { href: "/admin/lotes", title: "Lotes de plaquinhas", text: "Imprimir QR e exportar para NFC" },
+            { href: "/admin/lotes", title: "Lotes de plaquinhas", text: "Imprimir os QR Codes" },
             ...(user.isAdmin
               ? [
                   { href: "/admin/produtos", title: "Produtos", text: "Catálogo, preços e estoque" },

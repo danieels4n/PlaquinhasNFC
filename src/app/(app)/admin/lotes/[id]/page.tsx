@@ -37,13 +37,11 @@ async function BatchSheet({ params }: { params: PageProps<"/admin/lotes/[id]">["
     <>
       <div className="no-print">
         <PageHeader back="/admin/lotes" eyebrow={batch.product_label || "Lote"} title={batch.name} subtitle={`${items.length} plaquinhas`} />
-        <div className="mb-5 grid grid-cols-2 gap-2">
+        <div className="mb-3 grid">
           <PrintButton />
-          <a href={`/admin/lotes/${id}/csv`} className="btn-ghost">Baixar CSV (NFC)</a>
         </div>
         <p className="mb-5 text-xs text-muted">
-          O CSV traz o link de cada plaquinha para gravar nos chips NFC (ex.: app NFC Tools, modo em lote). Grave no chip o mesmo
-          link do QR.
+          Imprima um QR em cada plaquinha. Os chips NFC vão virgens: o revendedor grava o link de cada uma depois, pelo app.
         </p>
       </div>
 

@@ -12,6 +12,7 @@ import { DESTINATION_LABEL, STATUS_LABEL, type Customer, type Plate } from "@/li
 import { updatePlate } from "../actions";
 import { ScanChart } from "./scan-chart";
 import { ActivationCelebration } from "@/components/activation-celebration";
+import { NfcWriter } from "@/components/nfc-writer";
 
 export const metadata: Metadata = { title: "Gerenciar plaquinha" };
 
@@ -62,6 +63,7 @@ async function PlateDetail({ params, searchParams }: { params: PageProps<"/plaqu
             Baixar QR
           </a>
         </div>
+        <NfcWriter url={url} />
         <div className="grid w-full grid-cols-2 border-t border-line pt-3">
           <div>
             <p className="text-xl font-semibold tabular-nums">{plate.scans}</p>

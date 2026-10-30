@@ -5,7 +5,7 @@ import { markOnboarding } from "@/app/(app)/onboarding-actions";
 
 const STEPS = [
   { title: "Pedido pago chega em “Novos”", text: "Você recebe um e-mail e o pedido aparece aqui, já com as plaquinhas geradas." },
-  { title: "Produza e imprima", text: "Toque em Iniciar produção, imprima os QR Codes e grave o mesmo link em cada chip NFC (CSV)." },
+  { title: "Produza e imprima", text: "Toque em Iniciar produção, imprima os QR Codes nas plaquinhas. Os chips NFC vão virgens." },
   { title: "Envie com rastreio", text: "Marque como pronto e, ao despachar, informe o código de rastreio. O cliente é avisado." },
   { title: "Confirme a entrega", text: "Quando chegar, marque como entregue. O revendedor ativa cada plaquinha escaneando o QR." },
 ];
